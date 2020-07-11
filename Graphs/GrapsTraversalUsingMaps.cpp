@@ -87,9 +87,8 @@ void bfs(Graph* src){
 
     cout<<endl;
 }
-map<Graph*, bool> visited;
 
-void dfsTraversal(Graph *src)
+void dfsTraversal(Graph *src, map<Graph*,bool> &visited)
 {
 
         //cout<<"isVisited ="<<visited[src]<<endl;
@@ -99,14 +98,14 @@ void dfsTraversal(Graph *src)
         for(int i = 0; i < src->adjList.size(); i++)
         {
             if (!visited[src->adjList[i]])
-                dfsTraversal(src->adjList[i]);
+                dfsTraversal(src->adjList[i], visited);
         }
 }
 
 void dfs(Graph* src)
 {
-
-    dfsTraversal(src);
+    map<Graph*, bool> visited;
+    dfsTraversal(src, visited);
     cout<<endl;
 }
 int main(){
